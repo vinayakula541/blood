@@ -1,24 +1,23 @@
 <?php include 'connect.php';?>
 <?php
-$username = 0;
+$username = null;
 $password = null;
 $gender = null;
-$age = 0;
+$age = null;
 $group = null;
 $location = null;
-$sql=null;
-if(isset($_POST['submit']))
+if($_SERVER['REQUEST_METHOD']=='POST')
 {
-$username = $_POST['username'];
-$password = $_POST['password'];
-$gender = $_POST['gender'];
-$age = $_POST['age'];
-$group = $_POST['group'];
-$location = $_POST['location'];
+$username = $_REQUEST['username'];
+$password = $_REQUEST['password'];
+$gender = $_REQUEST['gender'];
+$age = $_REQUEST['age'];
+$group = $_REQUEST['group'];
+$location = $_REQUEST['location'];
 
 }
-$sql = "INSERT INTO register (username,password,gender,age,blood group,location) VALUES ('$username','$password','$gender','$age','$group','$location');";
-if($conn->multi_query($sql)==TRUE)
+$sql = "INSERT INTO register(username,password,gender,age,blood group,location) VALUES('$username','$password','$gender','$age','$group','$location');";
+if($conn->multi_query($sql)===TRUE)
 {
     echo "New record inserted successfully","<br>";
    
